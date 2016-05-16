@@ -1,0 +1,292 @@
+body, html{
+    margin: 0;
+    height: 100%;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+}
+
+.menu{
+    width: 100%;
+    height: 5%;
+    background-color: rgb(19,94,88);
+}
+
+.centreImage{
+    width: 100%;
+    height: 75%;
+    position: relative;
+    display: block;
+    border-top: solid 3px rgb(10,51,48);
+    /border-bottom: solid 3px rgb(0,29,24);
+    /background-color: rgb(255,255,255);
+    background: url(st2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.font {
+    position: absolute;
+    width: 80%;
+    height: 10%;
+    left: 5%;
+    top: 25%;
+    color: rgb(10,51,48);
+    font-family: "Arial Black", "Times New Roman", serif;
+    font-style: normal;
+}
+
+.registerTitle{
+    position: absolute;
+    text-align: center;
+    font-size: 3.3em;
+    width: 20%;
+    height: 2%;
+    left: 40%;
+    top: -5%;
+    color: rgb(10,51,48);
+    font-family: "Arial Black", "Times New Roman", serif;
+    font-style: normal;
+}
+
+.centre{
+    width: 100%;
+    height: 92%;
+    position: relative;
+    display: block;
+    border-top: solid 3px rgb(10,51,48);
+    /border-bottom: solid 3px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    background-size: 100% 100%;
+}
+
+#quizar{
+    position: absolute;
+    font-size: 12.3em;
+    height: 10%;
+}
+
+#system{
+    position: absolute;
+    left: 10%;
+    padding-top: 23.5%;
+    font-size: 3.3em;
+}
+
+.authoriz{
+    position: absolute;
+    width: 13%;
+    /height: 33.5%;
+    height: 40.5%;
+    right: 8%;
+    top: 20%;
+}
+
+.registr{
+    position: absolute;
+    width: 20%;
+    height: 80.5%;
+    left: 40%;
+    top: 11%;
+    border: solid 4px rgb(0,29,24);
+}
+
+.footer {
+    width: 100%;
+    height: 19.7%;
+    background-color: rgb(10,51,48);
+}
+
+.authozForm{
+    width: 100%;
+    height: 100%;
+    padding: 13% 2% 1% 5%;
+    background-color: rgb(255,255,255);
+    border: solid 4px rgb(0,29,24);
+}
+
+.registerForm{
+    position: absolute;
+    width: 70%;
+    height: 90%;
+    margin-left: 13%;
+    padding: 13% 2% 1% 5%;
+    background-color: rgb(255,255,255);
+    /border: solid 4px rgb(0,29,24);
+}
+
+.pas{
+    /margin-bottom: 10px;
+}
+
+.regText{
+    font-size: 1.3em;
+}
+
+label {
+    width: 3em;
+    text-align: left;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: rgb(10,51,48);
+    font-family: "Arial", "Times New Roman", serif;
+    padding-bottom: 6%;
+}
+
+.text{
+    /text-align: left;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: rgb(10,51,48);
+    font-family: "Arial", "Times New Roman", serif;
+    /padding-bottom: 6%;
+}
+
+.message{
+    font-size: 1.1em;
+    font-weight: bold;
+    color: rgb(10,51,48);
+    font-family: "Arial", "Times New Roman", serif;
+}
+
+a{
+    font-weight: bold;
+    color: rgb(10,51,48);
+    font-family: "Arial", "Times New Roman", serif;
+    font-size: 1em;
+    padding-right: 2%;
+}
+
+input{
+    background: none repeat scroll 0 0 rgb(255,255,255);
+    border-color: rgb(10,51,48);
+    -webkit-transition-property: -webkit-box-shadow, background;
+    -webkit-transition-duration: 0.25s;
+    -webkit-box-shadow: 0px 0px 2px #000;
+    -moz-box-shadow: 0px 0px 2px #000;
+    box-shadow: 0 0 2px #000000;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    padding: 4px;
+    margin-top: 4%;
+    width: 17em;
+    height: 2em;
+}
+
+.choise{
+    height: 1.5em;
+    width: 1.5em;
+    border: none;
+    box-shadow: none;
+}
+
+input.submit_registr{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.1em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 2%;
+    margin-top: 9%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.submit_registr:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.submit_registr{
+    width: 13em;
+}
+
+input.submit_authoriz{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.7em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 3%;
+    margin-top: 5%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.submit_authoriz:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.submit_authoriz{
+    width: 4em;
+}
+
+input.subjects{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 27%;
+    margin-top: 2.5%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.subjects:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.subjects{
+    width: 7em;
+}
+
+input.tutors{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 53%;
+    margin-top: -5.8%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.tutors:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.tutors{
+    width: 7em;
+}
+
+#rightMenu{list-style:none; width: 40%;height: 4em; padding:0;margin-top: 0;margin-left: 60%;}
+#rightMenu li{border: none; float:right; font-family:"Arial Black", "Times New Roman", serif; font-size: 5.3em;}
+#rightMenu input{margin-top: 0; border: none; font-family:"Arial Black", "Times New Roman", serif; padding-bottom:15%; width: 8em;
+    font-size: 0.2em; color:rgb(255,255,255); display:block; height: 4em;background:rgb(19,94,88); text-decoration:none;}
+#rightMenu input:hover{margin-top: 0; border: none; color:rgb(19,94,88); background:rgb(255,255,255);}
+
+#leftMenu{list-style:none; width: 40%;height: 4em; padding:0;margin-top: -5%;margin-left: -20%;}
+#leftMenu li{border: none; float:right; font-family:"Arial Black", "Times New Roman", serif; font-size: 5.3em;}
+#leftMenu input{margin-top: 0; border: none; font-family:"Arial Black", "Times New Roman", serif; padding-bottom:15%; width: 8em;
+    font-size: 0.2em; color:rgb(255,255,255); display:block; height: 4em;background:rgb(19,94,88); text-decoration:none;}
+#leftMenu input:hover{margin-top: 0; border: none; color:rgb(19,94,88); background:rgb(255,255,255);}
+

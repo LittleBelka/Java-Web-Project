@@ -1,0 +1,364 @@
+body, html{
+    margin: 0;
+    height: 100%;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    margin:0 auto;
+}
+
+.menu{
+    width: 100%;
+    height: 5%;
+    background-color: rgb(19,94,88);
+}
+
+.centreImage{
+    width: 100%;
+    height: 40%;
+    position: relative;
+    display: block;
+    border-top: solid 3px rgb(10,51,48);
+    background: url(book1.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.centreInfo{
+    width: 100%;
+    position: relative;
+    display: block;
+    background-color: rgb(255,255,255);
+    border-top: solid 3px rgb(10,51,48);
+    background-size: 100% 100%;
+}
+
+.name_user{
+    position: absolute;
+    text-align: center;
+    font-size: 1.3em;
+    width: 20%;
+    height: 2%;
+    length: 5%;
+    top: 3%;
+    /color: rgb(10,51,48);
+    color: rgb(255,255,255);
+    font-family: "Arial Black", "Times New Roman", serif;
+    font-style: normal;
+}
+
+.footer {
+    width: 100%;
+    /height: 19.7%;
+    /background-color: rgb(10,51,48);
+}
+
+.conclusionByButtons{
+    width: 75%;
+    /height: 30%;
+    margin-left: 11%;
+    margin-top: 2%;
+    border: solid 3px rgb(10,51,48);
+    padding: 2% 2% 2% 2%;
+}
+
+.choiseInfoTest{
+    width: 75%;
+    margin-left: 11%;
+    margin-top: 3%;
+    border: solid 3px rgb(10,51,48);
+    padding: 2% 2% 2% 2%;
+}
+
+#rightMenu{list-style:none; width: 40%;height: 4em; padding:0;margin-top: -0.1%;margin-left: 60%;}
+#rightMenu li{border: solid 1px rgb(10,51,48); float:right; font-family:"Arial Black", "Times New Roman", serif; font-size: 5.3em;}
+#rightMenu input{margin-top: 0; border: none; font-family:"Arial Black", "Times New Roman", serif; padding-bottom:15%; width: 8em;
+    font-size: 0.2em; color:rgb(255,255,255); display:block; height: 4em;background:rgb(19,94,88); text-decoration:none;}
+#rightMenu input:hover{margin-top: 0; border: none; color:rgb(19,94,88); background:rgb(255,255,255);}
+
+#leftMenu{list-style:none; width: 40%;height: 4em; padding:0;margin-top: -5%;margin-left: -20%;}
+#leftMenu li{border: solid 1px rgb(10,51,48); float:right; font-family:"Arial Black", "Times New Roman", serif; font-size: 5.3em;}
+#leftMenu input{margin-top: 0; border: none; font-family:"Arial Black", "Times New Roman", serif; padding-bottom:15%; width: 8em;
+    font-size: 0.2em; color:rgb(255,255,255); display:block; height: 4em;background:rgb(19,94,88); text-decoration:none;}
+#leftMenu input:hover{margin-top: 0; border: none; color:rgb(19,94,88); background:rgb(255,255,255);}
+
+#leftMenuWithRegistration{list-style:none; width: 40%;height: 4em; padding:0;margin-top: -0.1%;margin-left: -20%;}
+#leftMenuWithRegistration li{border: solid 1px rgb(10,51,48); float:right; font-family:"Arial Black", "Times New Roman", serif; font-size: 5.3em;}
+#leftMenuWithRegistration input{margin-top: 0; border: none; font-family:"Arial Black", "Times New Roman", serif; padding-bottom:15%; width: 8em;
+    font-size: 0.2em; color:rgb(255,255,255); display:block; height: 4em;background:rgb(19,94,88); text-decoration:none;}
+#leftMenuWithRegistration input:hover{margin-top: 0; border: none; color:rgb(19,94,88); background:rgb(255,255,255);}
+
+.mainButtonStudent{
+    width: 100%;
+    height: 10.7%;
+}
+
+input.subjects{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 27%;
+    margin-top: 2.5%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.subjects:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.subjects{
+    width: 7em;
+}
+
+input.tutors{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 53%;
+    margin-top: -5.8%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.tutors:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.tutors{
+    width: 7em;
+}
+
+input.subjectsTutor{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 15%;
+    margin-top: 2.5%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.subjectsTutor:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.subjectsTutor{
+    width: 8em;
+}
+
+input.testTutor{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 39%;
+    margin-top: -5.8%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.testTutor:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.testTutor{
+    width: 8em;
+}
+
+input.tutorsTutor{
+    border: solid 4px rgb(0,29,24);
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 3.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 63%;
+    margin-top: -5.8%;
+    padding: 1% 2% 1% 2%;
+}
+
+input.tutorsTutor:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.tutorsTutor{
+    width: 8em;
+}
+
+input.footerSubmit{
+    /border: solid 4px rgb(0,29,24);
+    border: none;
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    /margin-left: 63%;
+    /margin-top: -5.8%;
+    /padding: 1% 2% 1% 2%;
+}
+
+input.footerSubmit:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.footerSubmit{
+    width: 43.5em;
+}
+
+.myTest{
+    margin-top: 2.5%;
+}
+
+label {
+    width: 13em;
+    text-align: left;
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(10,51,48);
+    font-family: "Arial", "Times New Roman", serif;
+    padding-bottom: 6%;
+}
+
+.myCreatedTest{
+    font-size: 2em;
+    margin-left: 40%;
+}
+
+.indent{
+    color: rgb(255,255,255);
+    width: 4em;
+}
+
+input.footerSubmitTest{
+/border: solid 4px rgb(0,29,24);
+    border: none;
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.2em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+/margin-left: 63%;
+   / margin-top: 3%;
+/padding: 1% 2% 1% 2%;
+}
+
+input.footerSubmitTest:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.footerSubmitTest{
+    width: 43.5em;
+}
+
+input.footerSubmitTestST{
+/border: solid 4px rgb(0,29,24);
+    border: none;
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.2em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 7%;
+/margin-top: -5.8%;
+/padding: 1% 2% 1% 2%;
+}
+
+input.footerSubmitTestST:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.footerSubmitTestST{
+    width: 43.5em;
+}
+
+input.footerSubmitTT{
+/border: solid 4px rgb(0,29,24);
+    border: none;
+    background-color: rgb(255,255,255);
+    color: rgb(10,51,48);
+    font: 1.5em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    margin-left: 13%;
+/margin-top: -5.8%;
+/padding: 1% 2% 1% 2%;
+}
+
+input.footerSubmitTT:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.footerSubmitTT{
+    width: 43.5em;
+}
+
+input.footerSubmitChange{
+/border: solid 4px rgb(0,29,24);
+    border: none;
+    background-color: rgb(255,255,255);
+    color: rgb(/*71,29,0*/ 143,48,0);
+    font: 1em "Arial", "Times New Roman", serif;
+    font-style: normal;
+    font-weight: bold;
+    text-align:center;
+    cursor: pointer;
+    opacity: 1;
+    /margin-left: 13%;
+/margin-top: -5.8%;
+/padding: 1% 2% 1% 2%;
+}
+
+input.footerSubmitChange:hover
+{
+    background-color:rgb(19,94,88);
+}
+
+.footerSubmitChange{
+    width: 12em;
+}

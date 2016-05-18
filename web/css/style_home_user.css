@@ -63,6 +63,15 @@ body, html{
     padding: 2% 2% 2% 2%;
 }
 
+.conclusionByButtonsForStudents{
+    width: 80%;
+/height: 30%;
+    margin-left: 8%;
+    margin-top: 2%;
+    border: solid 3px rgb(10,51,48);
+    padding: 2% 2% 2% 2%;
+}
+
 .choiseInfoTest{
     width: 75%;
     margin-left: 11%;
@@ -251,6 +260,36 @@ label {
     color: rgb(10,51,48);
     font-family: "Arial", "Times New Roman", serif;
     padding-bottom: 6%;
+}
+
+.stuHomeTest {
+    display: inline-block;
+    width: 25em;
+    font-style: normal;
+    font: 1.3em "Arial", "Times New Roman", serif;
+    font-weight: bold;
+    padding: 0% 0% 0% 0%;
+    margin-left: 5%;
+}
+
+.stSubj{
+    display: inline-block;
+    width: 25em;
+    padding: 0% 0% 0% 0%;
+    color: rgb(143,48,0);
+}
+
+.stTut{
+    display: inline-block;
+    width: 15em;
+    padding: 0% 0% 0% 0%;
+    color: rgb(143,48,0);
+}
+
+.stuRes{
+    display: inline-block;
+    width: 7em;
+    padding: 0% 0% 0% 0%;
 }
 
 .myCreatedTest{

@@ -13,29 +13,39 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * This is the class that checks the test results after its passage.
+ */
 public class TakeTest extends HttpServlet{
 
     private WorkDatabase db = new WorkDatabase();
     private HashMap<String, String[]> param = new HashMap<>();
 
+    /**
+     * This is the method that handles the GET request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
+    /**
+     * This is the method that handles the POST request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         param.clear();
         HttpSession session = request.getSession(true);
         param.putAll(request.getParameterMap());
-        /*System.out.println(" - - - - - - - -- - - - - - - - - - - - - - - - - - - - - -  Map param:");
-        for(String o:param.keySet()) {
-            for (int c=0; c<param.get(o).length; c++) {
-                System.out.println(o + " " + param.get(o)[c]);
-            }
-        }
-        System.out.println(" - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - ");*/
         param.remove("take_test");
         HashSet<Integer> idAnswers = new HashSet<>();
         for (String o: param.keySet()) {
@@ -54,6 +64,14 @@ public class TakeTest extends HttpServlet{
         request.getRequestDispatcher("result_test.jsp").forward(request, response);
     }
 
+    /**
+     * It is a method that counts passing the test results and forms information about wrong answers.
+     * @param session session object
+     * @param request servlet request
+     * @param idAnswersCorrect set of id of correct answers
+     * @param listQuestion list with questions
+     * @param idAnswers set of id of user answers
+     */
     private void resultTest(HttpSession session, HttpServletRequest request,
                                 HashSet<Integer> idAnswersCorrect, ArrayList<Pair<Integer, String>> listQuestion,
                                 HashSet<Integer> idAnswers) {
@@ -93,6 +111,14 @@ public class TakeTest extends HttpServlet{
         showResultTest(session, request, result, questYourAnswerAndAnswer);
     }
 
+    /**
+     * It is a method that sets the information on the test results for display to the user.
+     * @param session session object
+     * @param request servlet request
+     * @param result the number correct answers
+     * @param questYourAnswerAndAnswer It contains questions which the user answered incorrectly. It also
+     * contains the answers to them.
+     */
     private void showResultTest(HttpSession session, HttpServletRequest request, int result,
                  ArrayList<Pair<String, Pair<ArrayList<String>, ArrayList<String>>>> questYourAnswerAndAnswer) {
 
@@ -103,6 +129,11 @@ public class TakeTest extends HttpServlet{
         saveResult(session, result);
     }
 
+    /**
+     * This method saves the test result if the user is a student.
+     * @param session session object
+     * @param result the number correct answers
+     */
     private void saveResult(HttpSession session, int result) {
 
         if (session.getAttribute("status").equals("student")) {
@@ -112,7 +143,13 @@ public class TakeTest extends HttpServlet{
             ArrayList<Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>>> passedTest =
                     new ArrayList<>();
             passedTest.addAll(db.findMyPassedTest(Integer.parseInt(session.getAttribute("id").toString())));
+
+            for (int i = 0; i < passedTest.size(); i++) {
+                System.out.println(passedTest.get(i));
+            }
+
             session.setAttribute("passedTest", passedTest);
+
         }
     }
 }

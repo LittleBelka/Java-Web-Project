@@ -13,16 +13,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class MyCreatedTest extends HttpServlet{
+/**
+ * This is the class that depending on the situation makes a decision to open the test for solutions,
+ * open the test for editing or remove test.
+ */
+public class OperationsWithTest extends HttpServlet{
 
     private WorkDatabase db = new WorkDatabase();
     private HashMap<String, String[]> param = new HashMap<>();
 
+    /**
+     * This is the method that handles the GET request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
+    /**
+     * This is the method that handles the POST request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -38,10 +56,10 @@ public class MyCreatedTest extends HttpServlet{
         if (session.getAttribute("status").equals("student") || (session.getAttribute("status").equals("tutor") &&
                 (!bol || (request.getParameter("subjectFooterChange").equals(""))))) {
 
-            openTest(request, response, session, idTest);
+            openTest(request, session, idTest);
             request.getRequestDispatcher("take_test.jsp").forward(request, response);
         } else if(request.getParameter("subjectFooterChange").equals("0")) {
-            editTest(request, response, idTest);
+            editTest(request, idTest);
             request.getRequestDispatcher("edit_test.jsp").forward(request, response);
         } else {
             db.deleteTest(idTest);
@@ -57,7 +75,12 @@ public class MyCreatedTest extends HttpServlet{
         }
     }
 
-    private void editTest(HttpServletRequest request, HttpServletResponse response, int idTest) {
+    /**
+     * It is a method that collects data about the test for editing.
+     * @param request servlet request
+     * @param idTest id test
+     */
+    private void editTest(HttpServletRequest request, int idTest) {
 
         Pair<String, String> infTest = db.findSeparatorForTest(idTest);
         String separator = infTest.getValue();
@@ -67,16 +90,16 @@ public class MyCreatedTest extends HttpServlet{
         request.setAttribute("separator", separator);
         ArrayList<Pair<String, Pair<StringBuilder, StringBuilder>>> test = new ArrayList<>();
         test.addAll(db.openTestForEdit(idTest, separator));
-        /*System.out.println("_____________________________________________________________");
-        for (int i = 0; i < test.size(); i++) {
-            System.out.println(test.get(i).getKey());
-            System.out.println(test.get(i).getValue().getKey() + "  " + test.get(i).getValue().getValue());
-            System.out.println("_____________________________________________________________");
-        }*/
         request.setAttribute("editTest", test);
     }
 
-    private void openTest(HttpServletRequest request, HttpServletResponse response, HttpSession session, int idTest) {
+    /**
+     * It is a method that collects data about the test to open it.
+     * @param request servlet request
+     * @param session session object
+     * @param idTest id test
+     */
+    private void openTest(HttpServletRequest request, HttpSession session, int idTest) {
 
         ArrayList<Pair<Integer, String>> listQuestion = new ArrayList<>();
         listQuestion.addAll(db.findQuestionForOpenTest(idTest));
@@ -103,14 +126,5 @@ public class MyCreatedTest extends HttpServlet{
         session.setAttribute("listIdQuestionAndAnswer", listIdQuestionAndAnswer);
         request.setAttribute("listQuestionAndAnswer", listQuestionAndAnswer);
         request.setAttribute("nameTest", db.getNameTest(idTest));
-        /*for (int i = 0; i < listQuestionAndAnswer.size(); i++) {
-            System.out.println("________________________________________________");
-            System.out.println("question:  " + listQuestion.get(i).getKey());
-            for (int j = 0; j < listQuestionAndAnswer.get(i).getValue().size(); j++) {
-                System.out.println(listQuestionAndAnswer.get(i).getValue().get(j).getKey() + "  " +
-                        listQuestionAndAnswer.get(i).getValue().get(j).getValue());
-            }
-        }
-        System.out.println("- - - - - - - - - - - - - - - - - - - --  - - - - - - - - - - - - - - -");*/
     }
 }

@@ -72,7 +72,7 @@
     </div>
 
     <div class = "footer">
-        <form name="footerForm"  class="conclusionByButtons" action="MyCreatedTest" method="post">
+        <form name="footerForm"  class="conclusionByButtons" action="OperationsWithTest" method="post">
             <c:if test="${requestScope.nameTestsBySubject != null}">
                 <c:forEach items="${requestScope.nameTestsBySubject}" var="elem" varStatus="varStatus">
                     <input class="footerSubmitTestST" type="button" value="${elem.value.key}"

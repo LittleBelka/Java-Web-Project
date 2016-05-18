@@ -6,11 +6,19 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * This is the class that is invoked when a user attempts to authorization.
+ */
 public class EnterLoginPasswordFilter implements Filter {
 
-    @Override
-    public void init(FilterConfig fConfig) throws ServletException {}
-
+    /**
+     * This method intercepts and processes the requests to the servlet.
+     * @param request servlet request
+     * @param response servlet response
+     * @param chain object to provide a filter chain
+     * @throws IOException if an input or output error was detected
+     * @throws ServletException if the request can not be handled
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -24,7 +32,4 @@ public class EnterLoginPasswordFilter implements Filter {
             chain.doFilter(request, response);
         }
     }
-
-    @Override
-    public void destroy() {}
 }

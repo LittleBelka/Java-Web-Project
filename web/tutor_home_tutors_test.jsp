@@ -78,11 +78,12 @@
     </div>
 
     <div class = "footer">
-        <form name="footerForm"  class="conclusionByButtons" action="MyCreatedTest" method="post">
+        <form name="footerForm"  class="conclusionByButtons" action="OperationsWithTest" method="post">
             <c:if test="${requestScope.nameTestsByTutors != null}">
                 <c:forEach items="${requestScope.nameTestsByTutors}" var="elem" varStatus="varStatus">
                     <input class="footerSubmitTestST" type="button" value="${elem.value.key}"
-                           onclick="document.getElementById('command').value='${elem.key}';document.footerForm.submit(); ">
+                           onclick="document.getElementById('command').value='${elem.key}';
+                                   document.footerForm.submit(); ">
                     <label><c:out value="${subject}" /> <c:out value="${elem.value.value}" /></label><br>
                 </c:forEach>
             </c:if>

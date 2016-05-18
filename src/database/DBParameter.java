@@ -1,5 +1,8 @@
 package database;
 
+/**
+ * This class contains the names of the parameters that are needed to connect the database.
+ */
 public final class DBParameter {
 
     private DBParameter(){}

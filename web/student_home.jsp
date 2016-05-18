@@ -97,23 +97,20 @@
     </div>
 
     <div class = "footer">
-        <form name="footerForm"  class="conclusionByButtons" action="" method="post">
+        <div class="conclusionByButtonsForStudents">
             <label class="myCreatedTest"><c:out value="${myPassedTest}" /></label><br>
             <div class="myTest">
                 <c:if test="${sessionScope.passedTest != null}">
                     <c:forEach items="${sessionScope.passedTest}" var="elem" varStatus="varStatus">
-                        <input class="footerSubmitTest" type="button" value="${elem.value.key}"
-                               onclick="document.getElementById('command').value='${elem.key}';
-                                       document.footerForm.submit(); ">
-                        <label><c:out value="${elem.value.value.key}" /></label>
-                        <label><c:out value="${elem.value.value.value.key}" /></label>
-                        <label><c:out value="${elem.value.value.value.value.key}" /></label>
-                        <label><c:out value="${elem.value.value.value.value.value}" /></label><br>
+                        <label class="stuHomeTest"><c:out value="${elem.value.key}" /></label>
+                        <label class="stSubj"><c:out value="${elem.value.value.key}" /></label>
+                        <label class="stTut"><c:out value="${elem.value.value.value.key}" /></label>
+                        <label class="stuRes"><c:out value="${elem.value.value.value.value.key}" /></label>
+                        <label class="stuRes"><c:out value="${elem.value.value.value.value.value}" /></label><br>
                     </c:forEach>
                 </c:if>
             </div>
-            <input type="hidden" name="subjectFooter" id="command" value="" />
-        </form>
+        </div>
 
     </div>
 

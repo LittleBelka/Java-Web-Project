@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This is a class for creating test. Also used to "re-create" test after editing it.
+ */
 public class CreateTest extends HttpServlet {
 
     private ArrayList<Pair<String, HashMap<String, Boolean>>> test = new ArrayList<>();
@@ -22,6 +25,13 @@ public class CreateTest extends HttpServlet {
     private WorkDatabase db = new WorkDatabase();
     private HashMap<String, String[]> param = new HashMap<>();
 
+    /**
+     * This is the method that handles the POST request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -33,13 +43,7 @@ public class CreateTest extends HttpServlet {
         test.clear();
         HttpSession session = request.getSession(true);
         param.putAll(request.getParameterMap());
-        /*System.out.println(" - - - - - - - -- - - - - - - - - - - - - - - - - - - - - -  Map param:");
-        for(String o:param.keySet()) {
-            for (int c=0; c<param.get(o).length; c++) {
-                System.out.println(o + " " + param.get(o)[c]);
-            }
-        }
-        System.out.println(" - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - ");*/
+
         createTest(session, request);
 
         ArrayList<String> subjects = new ArrayList<>();
@@ -53,6 +57,11 @@ public class CreateTest extends HttpServlet {
         request.getRequestDispatcher("home.jsp").forward(request, response);
     }
 
+    /**
+     * This is the method that creates the test (or "re-create" test after editing it).
+     * @param session session object
+     * @param request servlet request
+     */
     private void createTest(HttpSession session, HttpServletRequest request) {
 
         String idTest = new String();
@@ -99,6 +108,12 @@ public class CreateTest extends HttpServlet {
         }
     }
 
+    /**
+     * It is a method that divides the string into parts.
+     * @param param a string that contains the response options to a question or numbers of correct answers
+     * @param separator a string that contains a separator for response options and numbers of the correct answers
+     * @return array of strings that contains the response options or the numbers of correct answers
+     */
     private ArrayList<String> splitStringParameter(String param, String separator) {
 
         ArrayList<String> array = new ArrayList<>();

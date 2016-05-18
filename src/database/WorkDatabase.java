@@ -1,9 +1,9 @@
 package database;
 
 import javafx.util.Pair;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,31 +11,43 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * It DAO class.
+ */
 public class WorkDatabase {
 
     private Logger logger = LogManager.getLogger(getClass().getName());
     ConnectionPool connect;
     private Connection conn;
 
+    /**
+     * This constructor to connect to the database.
+     */
     public WorkDatabase(){
-
         connect = new ConnectionPool();
         connect.initPoolData();
         conn = connect.takeConnection();
     }
 
-    public ArrayList<Users> authorization(String userName, String password) {
+    /**
+     * It is a method that checks the user's login and password at authorization.
+     * @param userName user login
+     * @param password user password
+     * @return Users object
+     */
+    public Users authorization(String userName, String password) {
 
-        ArrayList<Users> dataUser = new ArrayList<>();
+        Users dataUser = null;
         try(Statement stmt = conn.createStatement()) {
             ResultSet rs =
                     stmt.executeQuery("select * from Users where (password = \'" +
                             password + "\' and (login = \'" + userName + "\' or  e_mail =\'" + userName +"\'))");
             if (rs.next()) {
-                dataUser.add(new Users(
+            dataUser = new Users(
                         rs.getInt("id"),
                         rs.getString("login"),
                         rs.getString("password"),
@@ -43,8 +55,7 @@ public class WorkDatabase {
                         rs.getString("middle_name"),
                         rs.getString("last_name"),
                         rs.getString("user_status"),
-                        rs.getString("e_mail")
-                ));
+                        rs.getString("e_mail"));
             }
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Error in Statement", e);
@@ -52,6 +63,12 @@ public class WorkDatabase {
         return dataUser;
     }
 
+    /**
+     * This method is called when a user attempts register to determine that he has not yet registered in the system.
+     * @param userName user login
+     * @param email user email
+     * @return login, password or nothing
+     */
     public String findUser(String userName, String email) {
 
         String str = "";
@@ -72,6 +89,17 @@ public class WorkDatabase {
         return str;
     }
 
+    /**
+     * This method for user registration.
+     * @param userName user login
+     * @param password user password
+     * @param firstName user first name
+     * @param lastName user last name
+     * @param middleName user middle name
+     * @param email user email
+     * @param status user status (student or tutor)
+     * @return user id
+     */
     public int register(String userName, String password, String firstName, String lastName,
                             String middleName, String email, String status) {
 
@@ -93,6 +121,10 @@ public class WorkDatabase {
         return id;
     }
 
+    /**
+     * It is a method that makes the list of all the different subjects.
+     * @return list of all the different subjects
+     */
     public ArrayList<String> findAllSubjects() {
 
         ArrayList<String> subject = new ArrayList<>();
@@ -108,6 +140,10 @@ public class WorkDatabase {
         return subject;
     }
 
+    /**
+     * It is a method that makes the list of all tutors.
+     * @return list of all tutors
+     */
     public HashMap<Integer, String> findAllTutors() {
 
         HashMap<Integer, String> tutors = new HashMap<>();
@@ -124,6 +160,14 @@ public class WorkDatabase {
         return tutors;
     }
 
+    /**
+     * It is a method that saves in the database test that made tutor.
+     * @param id user id
+     * @param nameSubject name of the subject
+     * @param nameTest name of the test
+     * @param separator separator in the test
+     * @param test list of questions and answers
+     */
     public void createTest(String id, String nameSubject, String nameTest, String separator,
                            ArrayList<Pair<String, HashMap<String, Boolean>>> test) {
 
@@ -179,6 +223,12 @@ public class WorkDatabase {
         }
     }
 
+    /**
+     * It is a method that saves the data base of the test result that the student has passed.
+     * @param idStudent student id
+     * @param idTest test id
+     * @param result test result
+     */
     public void takeTest(int idStudent, int idTest, String result) {
 
         try(Statement stmt = conn.createStatement()) {
@@ -208,6 +258,11 @@ public class WorkDatabase {
         }
     }
 
+    /**
+     * This method finds the name subject of a particular test.
+     * @param idTest test id
+     * @return subject
+     */
     public String getSubjectTest(int idTest) {
 
         String subjectTest = null;
@@ -223,6 +278,11 @@ public class WorkDatabase {
         return subjectTest;
     }
 
+    /**
+     * This method finds the name of a particular test.
+     * @param idTest test id
+     * @return name of a particular test
+     */
     public String getNameTest(int idTest) {
 
         String nameTest = null;
@@ -238,6 +298,11 @@ public class WorkDatabase {
         return nameTest;
     }
 
+    /**
+     * This method finds the separator and name of a particular test.
+     * @param idTest test id
+     * @return separator and name of a particular test
+     */
     public Pair<String, String> findSeparatorForTest(int idTest) {
 
         Pair<String, String> infTest = null;
@@ -253,6 +318,12 @@ public class WorkDatabase {
         return infTest;
     }
 
+    /**
+     * This method is called when the tutor wants to edit the test.
+     * @param idTest test id
+     * @param separator test separator
+     * @return list of questions and answers
+     */
     public ArrayList<Pair<String, Pair<StringBuilder, StringBuilder>>> openTestForEdit(int idTest, String separator) {
 
         ArrayList<Pair<String, Pair<StringBuilder, StringBuilder>>> test = new ArrayList<>();
@@ -277,6 +348,12 @@ public class WorkDatabase {
         return test;
     }
 
+    /**
+     * This method is called when the tutor wants to edit the test.
+     * @param idQuestion question id
+     * @param sep test separator
+     * @return strings with response options and the correct answers
+     */
     private Pair<StringBuilder, StringBuilder> findAnswerForEditTest(int idQuestion, String sep) {
 
         StringBuilder answer = new StringBuilder();
@@ -308,6 +385,11 @@ public class WorkDatabase {
         return responseOption;
     }
 
+    /**
+     * This method makes a list of the questions and their id of a particular test.
+     * @param idTest test id
+     * @return list of the questions and their
+     */
     public ArrayList<Pair<Integer, String>> findQuestionForOpenTest(int idTest) {
 
         ArrayList<Pair<Integer, String>> listQuestion = new ArrayList<>();
@@ -325,6 +407,11 @@ public class WorkDatabase {
         return listQuestion;
     }
 
+    /**
+     * This method makes the list with response options and the correct answers to a particular question.
+     * @param idQuestion question id
+     * @return list with response options and the correct answers
+     */
     public ArrayList<Pair<Integer, Pair<String, Integer>>> getAnswerTheQuestion(int idQuestion) {
 
         ArrayList<Pair<Integer, Pair<String, Integer>>> listAnswer = new ArrayList<>();
@@ -343,6 +430,11 @@ public class WorkDatabase {
         return listAnswer;
     }
 
+    /**
+     * This method forms information about the tests on the subject name.
+     * @param subject test subject
+     * @return information about the tests
+     */
     public HashMap<Integer, Pair<String, String>> findTestsBySubject(String subject) {
 
         HashMap<Integer, Pair<String, String>> testsBySubject = new HashMap<>();
@@ -363,6 +455,11 @@ public class WorkDatabase {
         return testsBySubject;
     }
 
+    /**
+     * This method forms information about the tests with a particular tutor.
+     * @param idTutor tutor id
+     * @return information about the tests
+     */
     public HashMap<Integer, Pair<String, String>> findTestsByTutors(int idTutor) {
 
         HashMap<Integer, Pair<String, String>> testsByTutors = new HashMap<>();
@@ -381,6 +478,11 @@ public class WorkDatabase {
         return testsByTutors;
     }
 
+    /**
+     * This method returns information about all the tests that made a particular tutor.
+     * @param idTutor tutor id
+     * @return information about the tests
+     */
     public HashMap<Integer, Pair<String, String>> findMyCreatedTest(int idTutor) {
 
         HashMap<Integer, Pair<String, String>> myCreatedTest = new HashMap<>();
@@ -399,6 +501,11 @@ public class WorkDatabase {
         return myCreatedTest;
     }
 
+    /**
+     * This method returns information about all the tests that passed a particular student.
+     * @param idStudent student id
+     * @return information about the tests
+     */
     public ArrayList<Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>>>
                                                                                     findMyPassedTest(int idStudent) {
 
@@ -407,8 +514,8 @@ public class WorkDatabase {
         try(Statement stmt = conn.createStatement()) {
             ArrayList<Integer> idTests = new ArrayList<>();
             ResultSet rsIdTest =
-                    stmt.executeQuery("select distinct id_test, pass_test_date from Students " +
-                            "where id_student = \'" + idStudent + "\' order by pass_test_date");
+                    stmt.executeQuery("select distinct id_test from Students " +
+                            "where id_student = \'" + idStudent + "\'");
             while (rsIdTest.next()) {
                 idTests.add(Integer.parseInt(rsIdTest.getString("id_test")));
             }
@@ -427,9 +534,21 @@ public class WorkDatabase {
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Error in Statement", e);
         }
+        passedTest.sort(new Comparator<Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>>>() {
+            @Override
+            public int compare(Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>> o1,
+                               Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>> o2) {
+                return o1.getValue().getValue().getValue().getValue().getValue().compareTo(
+                        o2.getValue().getValue().getValue().getValue().getValue());
+            }
+        });
         return passedTest;
     }
 
+    /**
+     * This method that deletes particular test in the database.
+     * @param idTest test id
+     */
     public void deleteTest(int idTest) {
 
         try(Statement stmt = conn.createStatement()) {

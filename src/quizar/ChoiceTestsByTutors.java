@@ -11,8 +11,18 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * This is the class that creates a list all tests that are created a particular tutor.
+ */
 public class ChoiceTestsByTutors extends HttpServlet {
 
+    /**
+     * This is the method that handles the POST request.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

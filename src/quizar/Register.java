@@ -12,12 +12,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
+/**
+ * This is the class that is invoked when a user attempts to register.
+ */
 public class Register extends HttpServlet {
 
     private String login;
     private String password;
     private  ResourceBundle bundle;
 
+    /**
+     * This is the method that handles the POST request. After registration depending on the user's status
+     * is its forwarding to the specific page.
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if the request can not be handled
+     * @throws IOException if an input or output error was detected
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -56,6 +67,13 @@ public class Register extends HttpServlet {
         }
     }
 
+    /**
+     * It is a method that sets and deletes the values in the session (user data, data about the available
+     * subjects and tutors).
+     * @param session session object
+     * @param id id user
+     * @param db DAO class object
+     */
     private void changeSessionAttributes(HttpSession session, int id, WorkDatabase db) {
 
         session.setAttribute("id" , id);

@@ -1,8 +1,8 @@
 package database;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.Locale;
@@ -12,6 +12,9 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
+/**
+ * his class provides a pool of connections to the database.
+ */
 public class ConnectionPool {
 
     private Logger logger = LogManager.getLogger(getClass().getName());
@@ -23,6 +26,9 @@ public class ConnectionPool {
     private String password;
     private int poolSize;
 
+    /**
+     * This constructor that initializes the parameters for the database connection.
+     */
     public ConnectionPool() {
 
         DBResourceManager dbResourseManager = DBResourceManager.getInstance();
@@ -38,6 +44,9 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * It is a method that creates a queue of open connections to the database.
+     */
     public void initPoolData(){
 
         Locale.setDefault(Locale.ENGLISH);
@@ -57,10 +66,16 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * It is a method that calls a method to close the connections to the database.
+     */
     public void dispose() {
         clearConnectionQueue();
     }
 
+    /**
+     * It is a method that calls a method to close the connections to the database.
+     */
     private void clearConnectionQueue() {
 
         try {
@@ -71,6 +86,10 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Method which transfers the free open connection in the occupied.
+     * @return Connection object
+     */
     public Connection takeConnection(){
 
         Connection connection = null;
@@ -83,6 +102,12 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * This method to close the connection.
+     * @param con Connection object
+     * @param st Statement object
+     * @param rs ResultSet object
+     */
     public void closeConnection(Connection con, Statement st, ResultSet rs) {
 
         try {
@@ -102,6 +127,11 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * This method to close the connection.
+     * @param con Connection object
+     * @param st Statement object
+     */
     public void closeConnection(Connection con, Statement st) {
 
         try {
@@ -116,6 +146,11 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * It is a method that makes all changes to the database permanent, and calls the method to close the connection.
+     * @param queue queue open connections with the database
+     * @throws SQLException if a database access error occurs
+     */
     private void closeConnectionsQueue(BlockingQueue<Connection> queue) throws SQLException {
 
         Connection connection;
@@ -127,6 +162,9 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Class for database connections.
+     */
     private class PooledConnection implements Connection {
 
         private Connection connection;

@@ -72,12 +72,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>MyCreatedTest</servlet-name>
-        <servlet-class>quizar.MyCreatedTest</servlet-class>
+        <servlet-name>OperationsWithTest</servlet-name>
+        <servlet-class>quizar.OperationsWithTest</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MyCreatedTest</servlet-name>
-        <url-pattern>/MyCreatedTest</url-pattern>
+        <servlet-name>OperationsWithTest</servlet-name>
+        <url-pattern>/OperationsWithTest</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -185,7 +185,7 @@
 
     <filter-mapping>
         <filter-name>CharsetFilter</filter-name>
-        <url-pattern>/MyCreatedTest</url-pattern>
+        <url-pattern>/OperationsWithTest</url-pattern>
     </filter-mapping>
 
     <filter-mapping>

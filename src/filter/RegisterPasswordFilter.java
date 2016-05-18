@@ -6,17 +6,26 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+/**
+ * This is the class that is invoked for checking correct the password when a user attempts to register.
+ */
 public class RegisterPasswordFilter implements Filter {
 
-    @Override
-    public void init(FilterConfig fConfig) throws ServletException {}
-
+    /**
+     * This method intercepts and processes the requests to the servlet.
+     * @param request servlet request
+     * @param response servlet response
+     * @param chain object to provide a filter chain
+     * @throws IOException if an input or output error was detected
+     * @throws ServletException if the request can not be handled
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
         HttpSession session = ((HttpServletRequest) request).getSession();
-        ResourceBundle bundle = ResourceBundle.getBundle("localization.registration.locale_" + session.getAttribute("local"));
+        ResourceBundle bundle =
+                ResourceBundle.getBundle("localization.registration.locale_" + session.getAttribute("local"));
 
         if (session.getAttribute("passwordTmp").toString().length() >= 6) {
             if (session.getAttribute("passwordTmp").equals(session.getAttribute("passwordRepeatTmp"))) {
@@ -35,6 +44,4 @@ public class RegisterPasswordFilter implements Filter {
         }
     }
 
-    @Override
-    public void destroy() {}
 }

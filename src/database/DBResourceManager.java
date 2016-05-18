@@ -2,6 +2,9 @@ package database;
 
 import java.util.ResourceBundle;
 
+/**
+ * This is the class that provides access to resources that are needed to connect to the database.
+ */
 public class DBResourceManager {
 
     private final static DBResourceManager instance = new DBResourceManager();

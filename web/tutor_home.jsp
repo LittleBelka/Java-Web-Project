@@ -114,7 +114,7 @@
     </div>
 
     <div class = "footer">
-        <form name="footerForm"  class="conclusionByButtons" action="MyCreatedTest" method="post">
+        <form name="footerForm"  class="conclusionByButtons" action="OperationsWithTest" method="post">
             <label class="myCreatedTest"><c:out value="${myCreatedTest}" /></label><br>
             <div class="myTest">
                 <c:if test="${sessionScope.myCreatedTest != null}">

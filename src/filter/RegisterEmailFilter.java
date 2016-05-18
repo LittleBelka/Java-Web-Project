@@ -8,12 +8,19 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This is the class that is invoked for email validation when a user attempts to register.
+ */
 public class RegisterEmailFilter implements Filter {
 
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
-
+    /**
+     * This method intercepts and processes the requests to the servlet.
+     * @param request servlet request
+     * @param response servlet response
+     * @param chain object to provide a filter chain
+     * @throws IOException if an input or output error was detected
+     * @throws ServletException if the request can not be handled
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -31,7 +38,4 @@ public class RegisterEmailFilter implements Filter {
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
     }
-
-    @Override
-    public void destroy() {}
 }

@@ -9,11 +9,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * It DAO class.
@@ -538,8 +537,16 @@ public class WorkDatabase {
             @Override
             public int compare(Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>> o1,
                                Pair<Integer, Pair<String, Pair<String, Pair<String, Pair<String, String>>>>> o2) {
-                return o1.getValue().getValue().getValue().getValue().getValue().compareTo(
-                        o2.getValue().getValue().getValue().getValue().getValue());
+                DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+                Date date1 = new Date();
+                Date date2 = new Date();
+                try {
+                    date1 = format.parse(o1.getValue().getValue().getValue().getValue().getValue());
+                    date2 = format.parse(o2.getValue().getValue().getValue().getValue().getValue());
+                } catch (ParseException e) {
+                    logger.log(Level.ERROR, "Some problems occurred during parsing the date: ", e);
+                }
+                return date2.compareTo(date1);
             }
         });
         return passedTest;
